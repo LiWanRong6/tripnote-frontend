@@ -61,7 +61,9 @@ const deleteMember = async (id) => {
     icon: 'warning',
     title: '確定刪除?',
     showCancelButton: true,
-    cancelButtonColor: '#d33'
+    cancelButtonColor: '#d33',
+    confirmButtonText: '確認刪除',
+    cancelButtonText: '取消'
   }).then(async (result) => {
     if (result.isConfirmed) {
       await apiAuth.delete('/users/' + id)

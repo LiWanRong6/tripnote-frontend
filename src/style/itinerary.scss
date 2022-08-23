@@ -26,6 +26,12 @@
     align-items: center;
     justify-content: space-between;
 
+    .n-button {
+      .n-button__border {
+        border: none;
+      }
+    }
+
     .title {
       display: flex;
       align-items: center;
@@ -48,5 +54,28 @@
         margin-right: 15px;
       }
     }
+  }
+
+  .item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
+
+    .card-left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .n-button {
+        .n-button__border {
+          border: none;
+        }
+      }
+    }
+
   }
 }
