@@ -17,12 +17,17 @@
             <p>{{ attraction.description }}</p>
           </div>
           <template #footer v-if="token">
-            <n-button @click="showModal = true">加入行程</n-button>
-            <div>
-              <ul v-for="upTripnote in unpostTripnotes" :key="upTripnote._id">
-                <n-radio>{{ upTripnote.title }}</n-radio>
-              </ul>
+            <div v-if="unpostTripnotes.length > 0">
+              <h3>選擇行程</h3>
+              <n-radio-group v-model:value="ItineraryItems._id">
+                <n-radio v-for="upTripnote in unpostTripnotes" :key="upTripnote._id" :value="upTripnote._id">
+                  {{ upTripnote.title }}
+                </n-radio>
+              </n-radio-group>
             </div>
+          </template>
+          <template #action v-if="unpostTripnotes.length > 0">
+            <n-button @click="addAttraction(attraction._id)">加入行程</n-button>
           </template>
         </n-card>
       </div>
@@ -33,7 +38,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import Swal from 'sweetalert2'
 import { useUserStore } from '@/stores/user'
@@ -43,12 +48,37 @@ const { token } = storeToRefs(user)
 
 const attractions = reactive([])
 const unpostTripnotes = reactive([])
-const showModal = ref()
+
+const ItineraryItems = reactive({
+  _id: '',
+  attraction: '',
+  spend: 0
+})
+
+const addAttraction = async (AID) => {
+  ItineraryItems.attraction = AID
+  try {
+    await apiAuth.post('/tripnotes/item', ItineraryItems)
+    Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '新增成功'
+    })
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: '新增失敗'
+    })
+  }
+}
 
 const getUnPostTripnotes = async () => {
   try {
     const { data } = await apiAuth.get('/tripnotes/unpost')
-    unpostTripnotes.push(...data.result)
+    if (data.result.length > 0) {
+      unpostTripnotes.push(...data.result)
+    }
   } catch (error) {
     Swal.fire({
       icon: 'error',
