@@ -1,0 +1,33 @@
+#NewTripinfo {
+  .carousel-item {
+    position: relative;
+
+    .carousel-img {
+      width: 100%;
+      height: 300px;
+    }
+
+    p {
+      position: absolute;
+      bottom: 25px;
+      font-size: 14px;
+      color: $white;
+      font-weight: bolder;
+      margin-left: 20px;
+    }
+  }
+
+  @include lg {
+    .carousel-item {
+
+      .carousel-img {
+        height: 600px;
+      }
+
+      p {
+        font-size: 30px;
+        bottom: 50px;
+      }
+    }
+  }
+}

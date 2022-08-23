@@ -1,0 +1,22 @@
+#Footer {
+  background: $primary;
+  height: 50px;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+  }
+
+  p {
+    color: $white;
+  }
+
+  a {
+    text-decoration: none;
+    color: $secondary;
+    font-weight: 700;
+    margin-left: 15px;
+  }
+}

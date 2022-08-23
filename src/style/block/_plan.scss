@@ -1,0 +1,66 @@
+#PlanItinerary {
+  height: calc(100% - 50px);
+  padding: 60px 0;
+  color: $primary;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 30px
+  }
+
+  .n-form {
+    width: 100%;
+
+    .n-date-picker {
+      width: 100%;
+    }
+
+    .n-form-item {
+      &:last-child {
+        .n-form-item-blank {
+
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .Btn {
+        border: none;
+        padding: 10px 80px;
+        border-radius: 30px;
+        border: 2px solid $primary;
+        background-color: transparent;
+        color: $primary;
+        cursor: pointer;
+
+        &:nth-child(2) {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .n-upload-file-list.n-upload-file-list--grid {
+    grid-template-columns: 1fr;
+  }
+
+  .n-upload-file-list {
+    .n-upload-file.n-upload-file--image-card-type {
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  @include lg {
+    .n-form {
+      width: 50%;
+    }
+  }
+}

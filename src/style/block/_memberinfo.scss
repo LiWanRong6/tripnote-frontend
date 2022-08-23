@@ -1,0 +1,64 @@
+#MemberInfo {
+  padding: 60px 0;
+  background-color: $primary;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    color: $secondary;
+  }
+
+  .n-form {
+    width: 100%;
+
+    .n-avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    .n-form-item {
+      .n-form-item-label {
+        color: $white
+      }
+
+      &:first-child {
+        .n-form-item-blank {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      &:last-child {
+        .n-form-item-blank {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .Btn {
+        padding: 10px 80px;
+        border-radius: 30px;
+        border: 2px solid $secondary;
+        background-color: $primary;
+        color: $secondary;
+        cursor: pointer;
+
+        &:nth-child(2) {
+          border: 2px solid $primary;
+          background-color: $secondary;
+          color: $primary;
+        }
+      }
+
+    }
+
+    @include lg {
+      width: 50%;
+    }
+  }
+}

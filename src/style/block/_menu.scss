@@ -1,0 +1,121 @@
+#Menu {
+  background-color: $primary;
+  height: 40px;
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+  }
+
+  .n-base-selection {
+    width: 100px;
+
+    .n-base-selection-label {
+      width: 100px;
+    }
+
+    .n-base-selection__border {
+      border: none;
+    }
+  }
+
+  .n-input {
+    .n-input-wrapper {
+      width: 300px;
+    }
+  }
+
+  .n-button {
+    .n-button__content {
+      color: $white;
+    }
+
+    .n-button__border {
+      border: none;
+    }
+  }
+
+  .menu-items {
+    list-style: none;
+    display: none;
+
+    .menu-item {
+      a {
+        text-decoration: none;
+      }
+
+      .startedBtn {
+
+        a {
+          text-decoration: none;
+          color: $primary;
+          background-color: $secondary;
+          font-weight: 700;
+          padding: 10px 20px;
+          border-radius: 30px;
+        }
+      }
+    }
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  .sidemenu-items {
+    list-style: none;
+    background-color: $white;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    border-radius: 10px;
+    z-index: 1;
+
+    a {
+      text-decoration: none;
+    }
+
+    .n-button {
+      .n-button__content {
+        color: $primary;
+      }
+    }
+
+    @include lg {
+      display: none;
+    }
+  }
+
+  .burgarBtn {
+    height: 40px;
+    padding: 0;
+    position: relative;
+
+    .n-button {
+      height: 40px;
+    }
+
+    .svg-inline--fa {
+      color: $secondary;
+      font-size: 24px;
+    }
+
+    @include lg {
+      display: none;
+    }
+  }
+
+  @include md {
+    height: 80px;
+  }
+}

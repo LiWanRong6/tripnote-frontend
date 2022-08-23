@@ -1,0 +1,38 @@
+#ItineraryList {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    color: $primary;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  #card {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .n-card {
+    width: 100%;
+    margin: 30px 10px;
+
+    @include md {
+      width: 45%;
+    }
+
+    @include lg {
+      width: 30%;
+    }
+
+    @include xl {
+      width: 22%;
+    }
+  }
+}

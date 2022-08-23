@@ -1,0 +1,77 @@
+#Login {
+  height: calc(100% - 50px);
+  padding: 60px 0;
+  background-color: $primary;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  h1 {
+    color: $secondary;
+  }
+
+  .n-form {
+    width: 60%;
+
+    .n-form-item {
+      .n-form-item-label {
+        color: $white
+      }
+    }
+
+    .n-button {
+      .n-button__content {
+        color: #fff;
+      }
+
+      .n-button__border {
+        border: none;
+      }
+    }
+
+    .toRegister {
+      display: flex;
+      justify-content: center;
+
+      p {
+        color: #B0B0B0;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+
+    @include md {
+      width: 45%;
+    }
+
+    @include lg {
+      width: 30%;
+    }
+  }
+
+  .loginBtn {
+    width: 100%;
+    border: none;
+    background-color: #E8CDA2;
+    color: #1F2E3C;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px;
+    border-radius: 30px;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #999999;
+      color: rgb(233, 233, 233);
+      cursor: wait;
+    }
+  }
+}
