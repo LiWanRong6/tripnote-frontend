@@ -1,0 +1,80 @@
+// 變數
+@import './variables';
+
+// RWD
+@import './mixins/rwd';
+
+#Attraction {
+  padding: 60px 0;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .sreach {
+    width: 100%;
+    height: 500px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include xl {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+    }
+
+    .n-image {
+      width: 100%;
+      height: 276px;
+    }
+
+    .card-content {
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h2 {
+          margin-top: 10px;
+        }
+
+        a {
+          font-size: 16px;
+          color: rgb(14, 118, 150);
+        }
+      }
+
+      .description {
+        color: rgb(153, 153, 153);
+      }
+
+      p {
+        line-height: 2;
+      }
+    }
+
+    .choose-itinerary {
+      h3 {
+        color: $gray;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
