@@ -2,9 +2,6 @@
   <div id="Itinerary">
     <div id="image-block">
       <n-image :src="tripnote.image"></n-image>
-      <n-upload>
-        <n-button>上傳圖片</n-button>
-      </n-upload>
     </div>
 
     <div class="container">
@@ -23,7 +20,7 @@
       <div class="user-time">
         <p>Created By
           <a>
-            {{ tripnote.user }}
+            <span>{{ tripnote.user }}</span>
           </a>
         </p>
         <p>{{ new Date(tripnote.created).toLocaleDateString() }}</p>
@@ -49,6 +46,9 @@
               <div v-else class="item-list-right" @dblclick="editItem(item)">${{ item.spend }}</div>
             </div>
 
+          </div>
+          <div class="addAttractionBtn">
+            <font-awesome-icon v-if="anotherTime.id != 0" icon="fa-solid fa-circle-plus" />
           </div>
         </div>
 

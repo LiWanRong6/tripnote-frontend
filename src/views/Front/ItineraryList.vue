@@ -2,15 +2,17 @@
   <div id="ItineraryList">
     <div class="container">
       <h1>行程清單</h1>
-      <div id="card" v-for="item in Itineraries" :key="item._id">
-        <router-link :to="'/tripnotes/' + item._id">
-          <n-card :title="item.title" class="card-item">
-            <template #cover>
-              <n-image :src="item.image" preview-disabled></n-image>
-            </template>
-            <n-button @click="deleteItinerary(item._id)">X</n-button>
-          </n-card>
-        </router-link>
+      <div class="wrapper">
+        <div id="card" v-for="item in Itineraries" :key="item._id">
+          <router-link :to="'/tripnotes/' + item._id">
+            <n-card :title="item.title" class="card-item">
+              <template #cover>
+                <n-image :src="item.image" preview-disabled></n-image>
+              </template>
+            </n-card>
+          </router-link>
+          <n-button @click="deleteItinerary(item._id)" color="rgba(231, 231, 231,0.5)">X</n-button>
+        </div>
       </div>
     </div>
   </div>
@@ -63,3 +65,6 @@ const init = async () => {
 }
 init()
 </script>
+
+<style lang="scss" src="../../style/MemberItineraryList.scss">
+</style>

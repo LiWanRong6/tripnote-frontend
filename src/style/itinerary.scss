@@ -6,20 +6,21 @@
 
 #Itinerary {
   width: 100%;
+  padding-bottom: 60px;
 
   .image-block,
   .n-image {
     width: 100%;
+    height: 20rem;
 
     img {
       width: 100%;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover !important;
     }
+
   }
 
-  .n-upload {
-    width: 100%;
-  }
 
   .header {
     display: flex;
@@ -29,7 +30,12 @@
     .n-button {
       .n-button__border {
         border: none;
+
       }
+    }
+
+    .fa-share-nodes {
+      font-size: 22px;
     }
 
     .title {
@@ -53,6 +59,10 @@
       &:first-child {
         margin-right: 15px;
       }
+    }
+
+    span {
+      color: $secondary;
     }
   }
 
@@ -80,6 +90,7 @@
   }
 
   .item-list {
+
     h2 {
       margin-top: 40px;
     }
@@ -106,8 +117,18 @@
 
     .item-list-left {
       display: flex;
-      align-items: center
+      align-items: center;
     }
+  }
+
+  .addAttractionBtn {
+    padding-top: 10px;
+    text-align: center;
+
+    .fa-circle-plus {
+      font-size: 22px;
+    }
+
   }
 
   .totalSpend {
@@ -115,7 +136,7 @@
     justify-content: flex-end;
     font-size: 20px;
     font-weight: 700;
-    margin: 10px 0;
+    margin: 20px 0;
     color: $secondary;
   }
 }

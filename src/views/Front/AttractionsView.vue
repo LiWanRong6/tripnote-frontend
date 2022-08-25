@@ -110,7 +110,6 @@ const getAttractions = async () => {
   }
 }
 getAttractions()
-
 getUnPostTripnotes()
 </script>
 <style lang="scss" src="../../style/Attraction.scss">
