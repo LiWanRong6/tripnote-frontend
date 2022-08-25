@@ -2,42 +2,73 @@
   <div id="Admin">
     <div id="Menu">
       <div class="container">
-        <router-link to="/">
-          <img src="../../assets/logo.svg" alt="logo"
-            style="display:inline-block; width:40px;height:auto; margin:0 8px">
-          <p style="color:azure; font-size: 20px; display:inline-block;line-height: 40px;margin-bottom:10px">TRIPNOTE
-          </p>
-        </router-link>
+        <div class="logo" style="text-align:center;">
+          <router-link to="/">
+            <img src="../../assets/logo.svg" alt="logo">
+            <p>TRIPNOTE</p>
+          </router-link>
+        </div>
         <ul class="menu-items">
           <li class="menu-item">
+            <a href="#attractions">
+              <n-button color="#1F2E3C">景點</n-button>
+            </a>
             <a href="#information">
-              <n-button>旅遊資訊</n-button>
+              <n-button color="#1F2E3C">旅遊資訊</n-button>
             </a>
             <a href="#reference">
-              <n-button> 參考行程</n-button>
+              <n-button color="#1F2E3C"> 參考行程</n-button>
             </a>
             <n-dropdown trigger="hover" :options="ItineraryOptions" v-if="isLogin">
-              <n-button>行程</n-button>
+              <n-button color="#1F2E3C">我的行程</n-button>
             </n-dropdown>
+            <a href="#admin" v-if="isLogin && isAdmin">
+              <n-button color="#1F2E3C">管理</n-button>
+            </a>
           </li>
-          <li class="menu-item">
-            <n-popover trigger="hover" :show-arrow="false">
-              <template #trigger>
-                <n-button round>
-                  <n-avatar round size="large" :src="avatar"></n-avatar>
-                </n-button>
-              </template>
-              <a href="#memberinfo">
-                <n-button>
-                  個人資料
-                </n-button>
-              </a>
-              <a href="#">
-                <n-button @click="logout">登出</n-button>
-              </a>
-            </n-popover>
+          <li class="menu-item" v-if="!isLogin">
+            <div class="startedBtn">
+              <n-button strong secondary round><a href="#login">開始使用</a>
+              </n-button>
+            </div>
           </li>
         </ul>
+        <div class="popover-group">
+          <n-popover trigger="click" v-if="isLogin" :show-arrow="false">
+            <template #trigger>
+              <n-avatar round :src="avatar"></n-avatar>
+            </template>
+            <a href="#memberinfo">個人資料 </a>
+            <a href="#">
+              <n-button class="logoutBtn" @click="logout" color="#E8CDA2">登出</n-button>
+            </a>
+          </n-popover>
+          <n-popover trigger="click" v-if="isLogin" :show-arrow="false">
+            <template #trigger>
+              <n-button class="burgarBtn" @mouseover="showMenu" color="#1F2E3C">
+                <font-awesome-icon icon="fa-solid fa-bars" />
+              </n-button>
+            </template>
+            <a href="#information">
+              旅遊資訊
+            </a>
+
+            <a href="#reference">
+              參考行程
+            </a>
+            <n-dropdown trigger="hover" :options="ItineraryOptions" v-if="isLogin">
+              我的行程
+            </n-dropdown>
+            <div class="startedBtn" v-if="!isLogin">
+              <a href="#login">
+                開始使用
+              </a>
+            </div>
+            <a href="#admin" v-if="isLogin && isAdmin">
+              管理
+            </a>
+          </n-popover>
+        </div>
       </div>
     </div>
     <div class="content">
@@ -90,12 +121,15 @@ const ItineraryOptions = [
 </script>
 <style lang="scss">
 #Admin {
+
   .content {
     #SiderMenu {
+      position: fixed;
       width: 192px;
-      height: calc(100vh - 80px);
+      height: 100vh;
       text-align: center;
       background-color: #2E3E4E;
+      float: left;
 
       .n-menu-item-content-header {
         a {
@@ -117,13 +151,13 @@ const ItineraryOptions = [
     }
 
     .main-layout {
-      width: 100%;
+      width: calc(100% - 192px);
       display: flex;
       justify-content: center;
       padding-top: 20px;
+      float: right;
     }
 
-    display: flex;
   }
 }
 </style>

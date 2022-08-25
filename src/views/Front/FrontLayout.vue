@@ -4,26 +4,26 @@
     <div class="container">
       <div class="logo" style="text-align:center;">
         <router-link to="/">
-          <img src="../../assets/logo.svg" alt="logo" style="width:40px; margin:0 8px">
-          <p style="color:azure; font-size: 20px;">TRIPNOTE</p>
+          <img src="../../assets/logo.svg" alt="logo">
+          <p>TRIPNOTE</p>
         </router-link>
       </div>
       <ul class="menu-items">
         <li class="menu-item">
           <a href="#attractions">
-            <n-button>景點</n-button>
+            <n-button color="#1F2E3C">景點</n-button>
           </a>
           <a href="#information">
-            <n-button>旅遊資訊</n-button>
+            <n-button color="#1F2E3C">旅遊資訊</n-button>
           </a>
           <a href="#reference">
-            <n-button> 參考行程</n-button>
+            <n-button color="#1F2E3C"> 參考行程</n-button>
           </a>
           <n-dropdown trigger="hover" :options="ItineraryOptions" v-if="isLogin">
-            <n-button>我的行程</n-button>
+            <n-button color="#1F2E3C">我的行程</n-button>
           </n-dropdown>
           <a href="#admin" v-if="isLogin && isAdmin">
-            <n-button>管理</n-button>
+            <n-button color="#1F2E3C">管理</n-button>
           </a>
         </li>
         <li class="menu-item">
@@ -45,60 +45,47 @@
           </div>
         </li>
       </ul>
-      <n-popover trigger="hover" v-if="isLogin">
-        <template #trigger>
-          <n-avatar round size="large" :src="avatar"></n-avatar>
-        </template>
-        <a href="#memberinfo">
-          <n-button>
-            個人資料
-          </n-button>
-        </a>
-        <a href="#">
-          <n-button @click="logout">登出</n-button>
-        </a>
-      </n-popover>
-      <div class="burgarBtn">
-        <n-button class="burgarBtn" @mouseover="showMenu">
-          <font-awesome-icon icon="fa-solid fa-bars" />
-        </n-button>
-        <ul class="sidemenu-items" v-show="sideMenu">
-          <li class="menu-item">
-            <a href="#information">
-              <n-button>旅遊資訊</n-button>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#reference">
-              <n-button> 參考行程</n-button>
-            </a>
-          </li>
-          <li class="menu-item" v-if="isLogin">
-            <n-dropdown trigger="hover" :options="ItineraryOptions">
-              <n-button>我的行程</n-button>
-            </n-dropdown>
-          </li>
-          <li class="menu-item" v-if="!isLogin">
-            <div class="startedBtn">
-              <a href="#login">
-                <n-button>開始使用</n-button>
-              </a>
-            </div>
-          </li>
-          <li class="menu-item" v-if="isLogin && isAdmin">
-            <a href="#admin">
-              <n-button>管理</n-button>
-            </a>
-          </li>
-        </ul>
+      <div class="popover-group">
+        <n-popover trigger="hover" v-if="isLogin" :show-arrow="false">
+          <template #trigger>
+            <n-avatar round :src="avatar"></n-avatar>
+          </template>
+          <a href="#memberinfo">個人資料 </a>
+          <a href="#">
+            <n-button class="logoutBtn" @click="logout" color="#E8CDA2">登出</n-button>
+          </a>
+        </n-popover>
+        <n-popover trigger="hover" v-if="isLogin" :show-arrow="false">
+          <template #trigger>
+            <n-button class="burgarBtn" @mouseover="showMenu" color="#1F2E3C">
+              <font-awesome-icon icon="fa-solid fa-bars" />
+            </n-button>
+          </template>
+          <a href="#attractions">
+            景點
+          </a>
+          <a href="#information">
+            旅遊資訊
+          </a>
 
+          <a href="#reference">
+            參考行程
+          </a>
+          <n-dropdown trigger="hover" :options="ItineraryOptions" v-if="isLogin">
+            我的行程
+          </n-dropdown>
+          <div class="startedBtn" v-if="!isLogin">
+            <a href="#login">
+              開始使用
+            </a>
+          </div>
+          <a href="#admin" v-if="isLogin && isAdmin">
+            管理
+          </a>
+        </n-popover>
       </div>
-
     </div>
   </div>
-
-
-
   <!-- FrontLayout ------------------------------------------------------------->
   <div id="FrontLayout">
     <router-view></router-view>

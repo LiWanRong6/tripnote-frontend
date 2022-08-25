@@ -121,8 +121,8 @@
     padding: 0;
     position: relative;
 
-    .n-button {
-      height: 40px;
+    &:hover {
+      background-color: transparent;
     }
 
     .svg-inline--fa {
@@ -138,6 +138,7 @@
   .n-avatar {
     width: 30px;
     height: 30px;
+    margin-right: 10px;
 
     @include md {
       width: 40px;
@@ -145,16 +146,13 @@
     }
   }
 
-
-
-
-
   @include md {
     height: 80px;
   }
 }
 
 .n-popover {
+
   .n-popover__content {
     display: flex;
     justify-content: center;
@@ -179,9 +177,21 @@
     span {
       text-align: center;
       line-height: 2.5;
+      color: $white;
 
       &:hover {
         color: $secondary;
+      }
+    }
+
+    .logoutBtn {
+      span {
+        color: $primary;
+        font-weight: 700;
+
+        &:hover {
+          color: $primary;
+        }
       }
     }
 
@@ -201,4 +211,9 @@
 .n-popover:not(.n-popover--raw):not(.n-popover--scrollable):not(.n-popover--show-header-or-footer) {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background-color: $primary;
+}
+
+.popover-group {
+  display: flex;
+  align-items: center;
 }

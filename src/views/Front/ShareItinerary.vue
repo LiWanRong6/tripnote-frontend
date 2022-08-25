@@ -36,15 +36,30 @@ const Itinerarylist = reactive([
         strong: true,
         tertiary: true,
         size: "small",
-        onClick: () => cancelPost(row.idx)
+        onClick: () => postTripnote(row._id, row.idx)
       }, { default: () => "取消發布" })
     }
   }
 ])
 const pagination = reactive({ pageSize: 10 })
-const cancelPost = (index) => {
-  tripnotes[index].ispost = false
-  console.log(tripnotes)
+const postTripnote = async (id, idx) => {
+  tripnotes[idx].ispost = false
+  try {
+    console.log(tripnotes)
+    await apiAuth.patch('/tripnotes/post/' + id, tripnotes[idx])
+    Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '取消分享'
+    })
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: '分享失敗'
+    })
+  }
 }
 const init = async () => {
   try {

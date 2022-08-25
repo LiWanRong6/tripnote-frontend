@@ -6,4 +6,66 @@
     font-size: 32px;
     margin-bottom: 30px;
   }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    padding-bottom: 60px;
+
+    .n-card {
+      background-color: $primary;
+      color: white;
+
+      .n-image {
+        width: 100%;
+
+        image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .n-card__content {
+        padding: 15px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+          letter-spacing: 2px;
+        }
+
+        p {
+          line-height: 3;
+          font-size: 14px;
+          letter-spacing: 2px;
+
+          span {
+            color: $secondary;
+          }
+        }
+      }
+    }
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include lg {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+    }
+
+    @include xl {
+      grid-column-gap: 5rem;
+      grid-row-gap: 5rem;
+    }
+  }
 }

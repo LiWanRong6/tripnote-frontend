@@ -78,4 +78,44 @@
     }
 
   }
+
+  .item-list {
+    h2 {
+      margin-top: 40px;
+    }
+
+    hr {
+      border: 2px solid $primary;
+      margin-bottom: 20px;
+    }
+
+    .item-list-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0px 0px 3px rgb(110, 110, 110);
+      margin: 10px 0;
+      padding: 5px 15px;
+
+      .n-button {
+        .n-button__border {
+          border: none;
+        }
+      }
+    }
+
+    .item-list-left {
+      display: flex;
+      align-items: center
+    }
+  }
+
+  .totalSpend {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: $secondary;
+  }
 }

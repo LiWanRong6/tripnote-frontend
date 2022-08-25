@@ -26,15 +26,17 @@
   </div>
   <div id="TopTrip">
     <div class='container'>
-      <h1>熱門行程</h1>
-      <div class="card"
-        style="color:white;font-size:14px;width:210px;height:300px;background-color:#1F2E3C; border-radius: 0 0 10px 10px;">
-        <n-image width="210" src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
-        <h3>行程標題</h3>
-        <p style="font-size:10px;">Created By <span>USER</span></p>
-        <div>
-          日期
-        </div>
+      <h1>最新分享行程</h1>
+      <div class="wrapper">
+        <n-card v-for="NewTripNote in NewTripNotes" :key="NewTripNote._id">
+          <template #cover>
+            <n-image :src="NewTripNote.image" />
+          </template>
+          <div class="content">
+            <h2>{{ NewTripNote.title }}</h2>
+            <p>Created By <span>{{ (NewTripNote.user.account).toUpperCase() }}</span></p>
+          </div>
+        </n-card>
       </div>
     </div>
   </div>
@@ -59,6 +61,9 @@ const user = useUserStore()
 const { isLogin } = storeToRefs(user)
 
 const NewTripInfos = reactive([])
+const NewTripNotes = reactive([])
+
+// 最新的旅遊資訊
 const getNewTripInfos = async () => {
   try {
     const { data } = await api.get('/tripinfos')
@@ -72,7 +77,21 @@ const getNewTripInfos = async () => {
   }
 }
 getNewTripInfos()
-
+// 最新的行程
+const getTripNotes = async () => {
+  try {
+    const { data } = await api.get('/tripnotes/userall')
+    NewTripNotes.push(...data.result.slice(-9))
+    console.log(NewTripNotes)
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
+getTripNotes()
 </script>
 
 <style lang="scss" src="../../style/fronthome.scss">

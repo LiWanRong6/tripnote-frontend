@@ -12,6 +12,8 @@ import { faMagnifyingGlass, faBars, faImage, faGlobe, faPhone, faHeart, faShareN
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
+
+
 import '@/style/style.scss'
 
 library.add(faMagnifyingGlass, faBars, faImage, faGlobe, faPhone, faHeart, faShareNodes, faEarthAmericas)
