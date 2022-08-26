@@ -156,7 +156,6 @@ const submitTripInfo = async () => {
   form.submitting = true
   const fd = new FormData()
   for (const key in form) {
-    console.log(form.description)
     if (['_id', 'idx', 'formValid', 'showModal', 'submitting'].includes(key)) continue
     else if (key === 'image') {
       if (form.image.length > 0) fd.append(key, form[key][0].file)
@@ -178,6 +177,7 @@ const submitTripInfo = async () => {
       })
     } else {
       const { data } = await apiAuth.patch('/tripinfos/' + form._id, fd)
+      console.log(fd)
       tripinfos[form.idx] = data.result
       Swal.fire({
         icon: 'success',

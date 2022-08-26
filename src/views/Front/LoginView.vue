@@ -1,7 +1,7 @@
 <template>
   <div id="Login">
+    <h1>登入</h1>
     <div class="container">
-      <h1>登入</h1>
       <n-form ref="formRef" :model="form" :rules="rules" @submit.prevent="login">
         <n-form-item label="帳號" path="account">
           <n-input v-model:value="form.account" placeholder="輸入帳號" minlength="4" maxlength="20" round />

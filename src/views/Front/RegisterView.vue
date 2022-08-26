@@ -35,7 +35,7 @@ const show = ref(false)
 const form = reactive({
   account: '',
   email: '',
-  password: '',
+  password: ''
 })
 const rules = reactive({
   account: [

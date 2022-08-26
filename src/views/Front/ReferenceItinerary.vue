@@ -32,7 +32,6 @@ const getTripNotes = async () => {
   try {
     const { data } = await api.get('/tripnotes/userall')
     TripNotes.push(...data.result)
-    console.log(TripNotes)
   } catch (error) {
     Swal.fire({
       icon: 'error',

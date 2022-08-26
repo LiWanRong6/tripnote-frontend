@@ -1,7 +1,26 @@
 <template>
   <div id="MemberInfo">
+    <h1>基本資料</h1>
     <div class="container">
-      <h1>基本資料</h1>
+      <div class="member-info-list">
+        <div class="member-info">
+          <n-avatar round :size="100" :src="'https://source.boringavatars.com/beam/150/' + user.account" />
+        </div>
+        <div class="member-info">
+          <div class="left">會員ID</div>
+          <div class="right">{{ user._id }}</div>
+        </div>
+        <div class="member-info">
+          <div class="left">帳號</div>
+          <div class="right">{{ user.account }}</div>
+        </div>
+        <div class="member-info">
+          <div class="left">信箱</div>
+          <div class="right">
+            <div>{{ user.email }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- Footer ------------------------------------------------------------->
@@ -16,13 +35,12 @@
   </div>
 </template>
 <script setup>
-import { reactive } from "vue"
+import { ref } from "vue"
 import { apiAuth } from "../../plugins/axios"
-const user = reactive([])
+const user = ref([])
 const init = async () => {
   const { data } = await apiAuth.get('/users')
-  user.push(data.result)
-  console.log(user)
+  user.value = data.result
 }
 init()
 </script>

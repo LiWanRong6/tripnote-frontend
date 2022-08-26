@@ -98,6 +98,7 @@ const getAttractions = async () => {
   }
 }
 getAttractions()
+console.log()
 if (token) {
   // 取的為分享的行程( ?+時間)
   const getUnPostTripnotes = async () => {
