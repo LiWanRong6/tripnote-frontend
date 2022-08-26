@@ -12,6 +12,8 @@ import { reactive, h } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 import { NImage, NButton } from 'naive-ui'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const tripnotes = reactive([])
 const Itinerarylist = reactive([
@@ -39,13 +41,24 @@ const Itinerarylist = reactive([
         onClick: () => postTripnote(row._id, row.idx)
       }, { default: () => "取消發布" })
     }
+  },
+  {
+    title: '編輯',
+    key: 'edit',
+    render(row) {
+      return h(NButton, {
+        strong: true,
+        tertiary: true,
+        size: "small",
+        onClick: () => editTripnote(row._id)
+      }, { default: () => "編輯" })
+    }
   }
 ])
 const pagination = reactive({ pageSize: 10 })
 const postTripnote = async (id, idx) => {
   tripnotes[idx].ispost = false
   try {
-    console.log(tripnotes)
     await apiAuth.patch('/tripnotes/post/' + id, tripnotes[idx])
     Swal.fire({
       icon: 'success',
@@ -60,6 +73,9 @@ const postTripnote = async (id, idx) => {
       text: '分享失敗'
     })
   }
+}
+const editTripnote = async (id) => {
+  router.push('/edit-share-tripnote/' + id)
 }
 const init = async () => {
   try {

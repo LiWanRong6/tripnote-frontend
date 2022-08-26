@@ -3,15 +3,19 @@
     <div class='container'>
       <h1>參考行程</h1>
       <div class="wrapper">
-        <n-card v-for="TripNote in TripNotes" :key="TripNote._id">
-          <template #cover>
-            <n-image :src="TripNote.image" />
-          </template>
-          <div class="content">
-            <h2>{{ TripNote.title }}</h2>
-            <p>Created By <span>{{ (TripNote.user.account).toUpperCase() }}</span></p>
-          </div>
-        </n-card>
+        <div class="card" v-for="TripNote in TripNotes" :key="TripNote._id">
+          <router-link :to="'/othertripnote/' + TripNote._id">
+            <n-card>
+              <template #cover>
+                <n-image :src="TripNote.image" preview-disabled />
+              </template>
+              <div class="content">
+                <h2>{{ TripNote.title }}</h2>
+                <p>Created By <span>{{ (TripNote.user.account).toUpperCase() }}</span></p>
+              </div>
+            </n-card>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>

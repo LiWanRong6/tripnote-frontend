@@ -28,15 +28,20 @@
     <div class='container'>
       <h1>最新分享行程</h1>
       <div class="wrapper">
-        <n-card v-for="NewTripNote in NewTripNotes" :key="NewTripNote._id">
-          <template #cover>
-            <n-image :src="NewTripNote.image" />
-          </template>
-          <div class="content">
-            <h2>{{ NewTripNote.title }}</h2>
-            <p>Created By <span>{{ (NewTripNote.user.account).toUpperCase() }}</span></p>
-          </div>
-        </n-card>
+        <div class="card" v-for="NewTripNote in NewTripNotes" :key="NewTripNote._id">
+          <router-link :to="'/othertripnote/' + NewTripNote._id">
+            <n-card>
+              <template #cover>
+                <n-image :src="NewTripNote.image" preview-disabled />
+              </template>
+              <div class="content">
+                <h2>{{ NewTripNote.title }}</h2>
+                <p>Created By <span>{{ (NewTripNote.user.account).toUpperCase() }}</span></p>
+              </div>
+            </n-card>
+          </router-link>
+        </div>
+
       </div>
     </div>
   </div>

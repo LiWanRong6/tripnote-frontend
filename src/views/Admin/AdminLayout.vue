@@ -122,6 +122,7 @@ const ItineraryOptions = [
 <style lang="scss">
 #Admin {
 
+
   .content {
     #SiderMenu {
       position: fixed;

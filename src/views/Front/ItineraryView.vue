@@ -13,9 +13,11 @@
             {{ new Date(tripnote.return).toLocaleDateString() }}
           </h2>
         </div>
-        <n-button @click="postTripnote">
-          <font-awesome-icon icon="fa-solid fa-share-nodes" />
-        </n-button>
+        <router-link :to="'/edit-share-tripnote/' + tripnote._id">
+          <n-button>
+            <font-awesome-icon icon="fa-solid fa-share-nodes" />
+          </n-button>
+        </router-link>
       </div>
       <div class="user-time">
         <p>Created By
@@ -69,7 +71,7 @@
           </template>
         </draggable> -->
       </div>
-      <p class="totalSpend">旅行總花費：{{ tripnote.item.reduce((a, b) => { return a + b.spend }, 0) }}</p>
+      <p class="totalSpend">旅行總花費：{{ tripnote.item.reduce((a, b) => { return Number(a) + Number(b.spend) }, 0) }}</p>
     </div>
   </div>
 </template>
@@ -100,32 +102,6 @@ const tripnote = reactive({
 })
 
 // 修改、刪除
-const postTripnote = async () => {
-  tripnote.ispost = !tripnote.ispost
-  try {
-    await apiAuth.patch('/tripnotes/post/' + tripnote._id, tripnote)
-    if (tripnote.ispost) {
-      Swal.fire({
-        icon: 'success',
-        title: '成功',
-        text: '分享成功'
-      })
-    } else {
-      Swal.fire({
-        icon: 'success',
-        title: '成功',
-        text: '取消分享'
-      })
-    }
-
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: '分享失敗'
-    })
-  }
-}
 const deleteItineraryItem = async (item) => {
   try {
     for (let i = 0; i < tripnote.item.length; i++) {
@@ -163,11 +139,11 @@ const saveEditItem = async (item) => {
       }
     }
     await apiAuth.patch('/tripnotes/item/' + tripnote._id, tripnote)
-    Swal.fire({
-      icon: 'success',
-      title: '成功',
-      text: '修改成功'
-    })
+    // Swal.fire({
+    //   icon: 'success',
+    //   title: '成功',
+    //   text: '修改成功'
+    // })
   } catch (error) {
     Swal.fire({
       icon: 'error',
@@ -209,15 +185,27 @@ const init = async () => {
     tripnote.ispost = data.result.ispost
     tripnote.item = data.result.item
 
+
     tripnote.item.forEach((item) => item.idx = idx++)
     tripnote.item.forEach((item) => item.edit = false)
     // 產生天數區域
-    for (let i = 0; i <= ((new Date(tripnote.return).getTime()) - (new Date(tripnote.departure).getTime())) / (1000 * 60 * 60 * 24) + 2; i++) {
-      if (i === 0) {
-        tripnote.rows.push({ id: i, title: '未排序' })
+    if (((new Date(tripnote.return).getTime()) - (new Date(tripnote.departure).getTime())) / (1000 * 60 * 60 * 24) == 0) {
+      for (let i = 0; i <= ((new Date(tripnote.return).getTime()) - (new Date(tripnote.departure).getTime())) / (1000 * 60 * 60 * 24) + 1; i++) {
+        if (i === 0) {
+          tripnote.rows.push({ id: i, title: '未排序' })
+        }
+        else {
+          tripnote.rows.push({ id: i, title: 'Day' + i })
+        }
       }
-      else {
-        tripnote.rows.push({ id: i, title: 'Day' + i })
+    } else {
+      for (let i = 0; i <= ((new Date(tripnote.return).getTime()) - (new Date(tripnote.departure).getTime())) / (1000 * 60 * 60 * 24) + 2; i++) {
+        if (i === 0) {
+          tripnote.rows.push({ id: i, title: '未排序' })
+        }
+        else {
+          tripnote.rows.push({ id: i, title: 'Day' + i })
+        }
       }
     }
   } catch (error) {

@@ -85,7 +85,6 @@ const form = reactive({
 
 })
 
-console.log(Date.now())
 const rules = reactive({
   name: [
     { required: true, message: '旅遊資訊標題必填', trigger: 'blur' },

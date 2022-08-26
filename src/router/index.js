@@ -141,7 +141,27 @@ const router = createRouter({
             login: false,
             admin: false
           }
+        },
+        {
+          path: 'othertripnote/:id',
+          name: 'othertripnote',
+          component: () => import('@/views/Front/OtherItinerary.vue'),
+          meta: {
+            title: 'TripNote',
+            login: false,
+            admin: false
+          }
+        }, {
+          path: 'edit-share-tripnote/:id',
+          name: 'edit-share-tripnote',
+          component: () => import('@/views/Member/EditShareTripnote.vue'),
+          meta: {
+            title: 'TripNote',
+            login: true,
+            admin: false
+          }
         }
+
       ]
     },
     {

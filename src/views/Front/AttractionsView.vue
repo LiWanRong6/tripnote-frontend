@@ -53,7 +53,8 @@ const ItineraryItems = reactive({
   _id: '',
   attraction: '',
   spend: 0,
-  list: 0
+  list: 0,
+  content: ''
 })
 
 const addAttraction = async (AID) => {
@@ -82,19 +83,6 @@ const addAttraction = async (AID) => {
   }
 }
 
-// 取的為分享的行程( ?+時間)
-const getUnPostTripnotes = async () => {
-  try {
-    const { data } = await apiAuth.get('/tripnotes/unpost')
-    unpostTripnotes.push(...data.result)
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: '失敗',
-      text: '伺服器錯誤'
-    })
-  }
-}
 
 // 取得所有景點
 const getAttractions = async () => {
@@ -110,7 +98,24 @@ const getAttractions = async () => {
   }
 }
 getAttractions()
-getUnPostTripnotes()
+if (token) {
+  // 取的為分享的行程( ?+時間)
+  const getUnPostTripnotes = async () => {
+    try {
+      const { data } = await apiAuth.get('/tripnotes/unpost')
+      unpostTripnotes.push(...data.result)
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: '伺服器錯誤'
+      })
+    }
+  }
+
+  getUnPostTripnotes()
+}
+
 </script>
 <style lang="scss" src="../../style/Attraction.scss">
 </style>
