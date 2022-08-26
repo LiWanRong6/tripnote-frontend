@@ -1,4 +1,4 @@
-import{k as b,n as m,l as c,M as z,m as u,q as S,s as C,t as h,z as p,I as x,N as k,x as r,O as $,T,P as w,K as _}from"./index.af3e5ef6.js";const R=i=>{const{opacityDisabled:a,heightTiny:e,heightSmall:s,heightMedium:l,heightLarge:t,heightHuge:n,primaryColor:o,fontSize:d}=i;return{fontSize:d,textColor:o,sizeTiny:e,sizeSmall:s,sizeMedium:l,sizeLarge:t,sizeHuge:n,color:o,opacitySpinning:a}},B={name:"Spin",common:b,self:R},L=B,P=m([m("@keyframes spin-rotate",`
+import{k as b,n as m,l as c,M as z,m as u,q as S,s as C,t as h,z as p,I as x,N as k,x as r,O as $,T,P as w,K as _}from"./index.c4474651.js";const R=i=>{const{opacityDisabled:a,heightTiny:e,heightSmall:s,heightMedium:l,heightLarge:t,heightHuge:n,primaryColor:o,fontSize:d}=i;return{fontSize:d,textColor:o,sizeTiny:e,sizeSmall:s,sizeMedium:l,sizeLarge:t,sizeHuge:n,color:o,opacitySpinning:a}},B={name:"Spin",common:b,self:R},L=B,P=m([m("@keyframes spin-rotate",`
  from {
  transform: rotate(0);
  }
