@@ -1,23 +1,36 @@
 <template>
   <div id="Register">
-    <h1>註冊</h1>
-    <n-form ref="formRef" :model="form" :rules="rules" @submit.prevent="register">
-      <!-- path:"rules 裡面的 account"-->
-      <n-form-item label="帳號" path="account">
-        <n-input v-model:value="form.account" placeholder="輸入帳號" minlength="4" maxlength="20" round />
-      </n-form-item>
-      <n-form-item label="信箱" path="email">
-        <n-input v-model:value="form.email" placeholder="輸入信箱" round />
-      </n-form-item>
-      <n-form-item label="密碼" path="password">
-        <n-input type="password" v-model:value="form.password" placeholder="輸入密碼" minlength="4" maxlength="20" round />
-      </n-form-item>
-      <n-form-item>
-        <n-spin :show="show">
-          <input class='registerBtn' type="submit" value="註冊">
-        </n-spin>
-      </n-form-item>
-    </n-form>
+    <div class="container">
+      <h1>註冊</h1>
+      <n-form ref="formRef" :model="form" :rules="rules" @submit.prevent="register">
+        <!-- path:"rules 裡面的 account"-->
+        <n-form-item label="帳號" path="account">
+          <n-input v-model:value="form.account" placeholder="輸入帳號" minlength="4" maxlength="20" round />
+        </n-form-item>
+        <n-form-item label="信箱" path="email">
+          <n-input v-model:value="form.email" placeholder="輸入信箱" round />
+        </n-form-item>
+        <n-form-item label="密碼" path="password">
+          <n-input type="password" v-model:value="form.password" placeholder="輸入密碼" minlength="4" maxlength="20"
+            round />
+        </n-form-item>
+        <n-form-item>
+          <n-spin :show="show">
+            <input class='registerBtn' type="submit" value="註冊">
+          </n-spin>
+        </n-form-item>
+      </n-form>
+    </div>
+  </div>
+  <!-- Footer ------------------------------------------------------------->
+  <div id="Footer">
+    <div class="container">
+      <p>©COPYRIGHT 2022
+        <router-link to="/contact">
+          <span>聯絡我們</span>
+        </router-link>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -88,47 +101,5 @@ const register = () => {
   })
 }
 </script>
-
-<style lang="scss">
-#Register {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #1F2E3C;
-
-  h1 {
-    color: #E8CDA2;
-  }
-
-  .n-form {
-    width: 50%;
-
-    .n-form-item {
-      .n-form-item-label {
-        color: #fff;
-      }
-    }
-
-  }
-
-
-  .registerBtn {
-    width: 100%;
-    border: none;
-    background-color: #E8CDA2;
-    color: #1F2E3C;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 8px;
-    border-radius: 30px;
-    cursor: pointer;
-
-    &:disabled {
-      background-color: #999999;
-      color: rgb(233, 233, 233);
-      cursor: wait;
-    }
-  }
-}
+<style lang="scss" src="../../style/RegisterView.scss">
 </style>
