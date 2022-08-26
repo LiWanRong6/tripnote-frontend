@@ -1,0 +1,46 @@
+// 變數
+@import './variables';
+
+// RWD
+@import './mixins/rwd';
+
+#EditShareTripnote {
+  padding: 60px 0;
+
+  .container {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    color: $lightblue;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    margin: 20px 0;
+  }
+
+  .ql-toolbar.ql-snow {
+    margin-top: 15px;
+  }
+
+  .ql-editor {
+    height: 500px;
+  }
+
+  .n-button {
+    padding: 10px 100px;
+    margin: 20px 0;
+    color: white;
+    background-color: $primary;
+    border: 2px solid $primary;
+    border-radius: 30px;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+      background-color: transparent;
+    }
+  }
+}

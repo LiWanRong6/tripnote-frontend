@@ -1,11 +1,19 @@
 <template>
-  <h1>{{ tripnote[0].title }}</h1>
-  <n-image :src="tripnote[0].image"></n-image>
-  <div v-for="item in tripnote[0].item" :key="item._id">
-    <div>
-      {{ item.attraction.name }}
+  <div id="OtherItinerary">
+    <div class="container">
+      <div>
+        <h1>{{ tripnote[0].title }}</h1>
+      </div>
+      <n-image :src="tripnote[0].image"></n-image>
+      <div v-for="item in tripnote[0].item" :key="item._id">
+        <div class="sub-title">
+          <font-awesome-icon icon="fa-solid fa-location-dot" />
+          {{ item.attraction.name }}
+          <n-button>加入行程</n-button>
+        </div>
+        <div v-html="item.content"></div>
+      </div>
     </div>
-    <div v-html="item.content"></div>
   </div>
 </template>
 
@@ -32,3 +40,6 @@ const init = async () => {
 }
 init()
 </script>
+
+<style lang="scss" src="../../style/OtherItinerary.scss">
+</style>

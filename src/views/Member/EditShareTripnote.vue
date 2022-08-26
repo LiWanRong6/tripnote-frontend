@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
-    <h1>【編輯分享行程】{{ tripnote.title }}</h1>
-    <h2 v-for="item in tripnote.item" :key="item._id">
-      {{ item.attraction.name }}
-      <QuillEditor v-model:content="item.content" :toolbar="toolbar" contentType="html">
-      </QuillEditor>
-    </h2>
-    <n-button @click="shareTripnote">確認</n-button>
+  <div id="EditShareTripnote">
+    <div class="container">
+      <h1>{{ tripnote.title }}</h1>
+      <div v-for="item in tripnote.item" :key="item._id" class="">
+        <h2>{{ item.attraction.name }}</h2>
+        <QuillEditor v-model:content="item.content" :toolbar="toolbar" contentType="html">
+        </QuillEditor>
+      </div>
+      <n-button @click="shareTripnote" color="#1F2E3C">確認</n-button>
+    </div>
   </div>
 </template>
 
@@ -71,3 +73,5 @@ const init = async () => {
 }
 init()
 </script>
+<style lang="scss" src="../../style/EditShareTripnote.scss">
+</style>

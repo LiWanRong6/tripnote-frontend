@@ -1,0 +1,55 @@
+// 變數
+@import './variables';
+
+// RWD
+@import './mixins/rwd';
+
+#OtherItinerary {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    color: $lightblue;
+    margin-bottom: 30px;
+  }
+
+  .n-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+    }
+  }
+
+  .sub-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 20px 0;
+  }
+
+  p {
+    width: 100%;
+    margin: 10px 0;
+    text-align: justify;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  span {
+    font-size: 16px;
+    line-height: 2;
+  }
+
+}
