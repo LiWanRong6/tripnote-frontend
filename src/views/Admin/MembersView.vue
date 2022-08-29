@@ -23,10 +23,7 @@ const memberlist = reactive([
   },
   {
     title: '會員名稱',
-    key: 'account',
-    render(row) {
-      return h('a', { href: '#' }, { default: () => row.account });
-    }
+    key: 'account'
   },
   {
     title: '權限',
@@ -48,6 +45,7 @@ const memberlist = reactive([
         strong: true,
         tertiary: true,
         size: "small",
+        class: "bg-red",
         onClick: () => deleteMember(row._id)
       }, { default: () => "刪除" });
     }
@@ -115,6 +113,11 @@ init()
       color: rgb(168, 168, 168);
       text-decoration: none;
     }
+  }
+
+  .bg-red {
+    color: white;
+    background-color: rgb(212, 28, 28);
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="container">
       <h1>景點</h1>
       <n-input-group class="search">
-        <input type="search" v-model.lazy.trim="ItineraryItems.Keyword">
+        <input type="search" v-model.lazy.trim="ItineraryItems.Keyword" placeholder="搜尋景點名稱">
         <button @keydown="SearchAttraction" @click="SearchAttraction">搜索</button>
       </n-input-group>
       <div class="wrapper">
@@ -108,7 +108,6 @@ getAttractions()
 const SearchAttraction = computed(() => {
   return attractions.filter(item => item.name.match(ItineraryItems.Keyword))
 })
-console.log(SearchAttraction)
 
 // 取的為分享的行程( ?+時間)
 const getUnPostTripnotes = async () => {

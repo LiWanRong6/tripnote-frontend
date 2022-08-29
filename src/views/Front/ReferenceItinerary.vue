@@ -2,8 +2,12 @@
   <div id="TopTrip">
     <div class='container'>
       <h1>參考行程</h1>
+      <n-input-group class="search">
+        <input type="search" v-model.lazy.trim="Keyword" placeholder="搜尋行程名稱">
+        <button @keydown="SearchAttraction" @click="SearchAttraction">搜索</button>
+      </n-input-group>
       <div class="wrapper">
-        <div class="card" v-for="TripNote in TripNotes" :key="TripNote._id">
+        <div class="card" v-for="TripNote in SearchAttraction" :key="TripNote._id">
           <router-link :to="'/othertripnote/' + TripNote._id">
             <n-card>
               <template #cover>
@@ -22,10 +26,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { api } from '../../plugins/axios'
 import Swal from 'sweetalert2'
 
+const Keyword = ref()
 const TripNotes = reactive([])
 
 const getTripNotes = async () => {
@@ -41,4 +46,8 @@ const getTripNotes = async () => {
   }
 }
 getTripNotes()
+
+const SearchAttraction = computed(() => {
+  return TripNotes.filter(item => item.title.match(Keyword.value))
+})
 </script>

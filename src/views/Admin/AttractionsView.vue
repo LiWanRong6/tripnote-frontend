@@ -1,5 +1,5 @@
 <template>
-  <div id="Attraction">
+  <div id="AdminAttraction">
     <div class="container">
       <div id="header">
         <h1>景點管理</h1>
@@ -254,7 +254,7 @@ init()
 </script>
 
 <style lang="scss">
-#Attraction {
+#AdminAttraction {
   width: 90%;
 
   .container {
