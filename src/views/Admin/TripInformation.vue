@@ -25,7 +25,7 @@
             </n-upload>
           </n-form-item>
           <n-form-item label="創作">
-            {{ form.user }}
+            {{  form.user  }}
           </n-form-item>
           <n-form-item label="時間">
             <n-input v-model:value="form.postdate"></n-input>
@@ -276,10 +276,21 @@ init()
       background-color: rgb(0, 128, 96);
     }
 
+    .n-input.n-input--textarea.n-input--resizable {
+      .n-input-wrapper {
+        min-height: 150px;
+      }
+
+    }
+
     .bg-red {
       color: white;
       background-color: rgb(212, 28, 28);
     }
   }
+}
+
+.ql-editor {
+  height: 500px;
 }
 </style>
