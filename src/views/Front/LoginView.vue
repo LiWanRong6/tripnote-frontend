@@ -11,7 +11,7 @@
             round />
         </n-form-item>
 
-        <n-button @click="showModal = true">忘記密碼</n-button>
+        <!-- <n-button @click="showModal = true">忘記密碼</n-button>
         <n-modal v-model:show="showModal">
           <n-card style="width: 600px" title="忘記密碼" :bordered="false" size="huge" role="dialog">
             <n-form>
@@ -21,7 +21,7 @@
               <n-button>寄出密碼重設</n-button>
             </template>
           </n-card>
-        </n-modal>
+        </n-modal> -->
 
         <n-form-item>
           <input class='loginBtn' type="submit" value=" 登入">

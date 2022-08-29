@@ -57,8 +57,20 @@
     }
   }
 
+  .n-spin-container {
+    width: 100%;
+  }
+
   .registerBtn {
     width: 100%;
+    border: none;
+    background-color: $secondary;
+    color: $primary;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px;
+    border-radius: 30px;
+    cursor: pointer;
   }
 
 }

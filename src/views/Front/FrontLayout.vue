@@ -26,7 +26,7 @@
             <n-button color="#1F2E3C">管理</n-button>
           </a>
         </li>
-        <li class="menu-item">
+        <!-- <li class="menu-item">
           <div class="search">
             <n-input-group>
               <n-input placeholder="搜索" autosize style="min-width: 70%">
@@ -34,10 +34,10 @@
                   <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
                 </template>
               </n-input>
-              <!-- <n-select v-model:value="value" :options="SelectOptions" style="min-width: 100px" /> -->
+              <n-select v-model:value="value" :options="SelectOptions" style="min-width: 100px" />
             </n-input-group>
           </div>
-        </li>
+        </li> -->
         <li class="menu-item" v-if="!isLogin">
           <div class="startedBtn">
             <n-button strong secondary round><a href="#login">開始使用</a>

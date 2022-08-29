@@ -26,6 +26,18 @@
               <n-button color="#1F2E3C">管理</n-button>
             </a>
           </li>
+          <li class="menu-item">
+            <div class="search">
+              <n-input-group>
+                <n-input placeholder="搜索" autosize style="min-width: 70%">
+                  <template #prefix>
+                    <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+                  </template>
+                </n-input>
+                <!-- <n-select v-model:value="value" :options="SelectOptions" style="min-width: 100px" /> -->
+              </n-input-group>
+            </div>
+          </li>
           <li class="menu-item" v-if="!isLogin">
             <div class="startedBtn">
               <n-button strong secondary round><a href="#login">開始使用</a>
@@ -34,7 +46,7 @@
           </li>
         </ul>
         <div class="popover-group">
-          <n-popover trigger="click" v-if="isLogin" :show-arrow="false">
+          <n-popover trigger="hover" v-if="isLogin" :show-arrow="false">
             <template #trigger>
               <n-avatar round :src="avatar"></n-avatar>
             </template>
@@ -43,12 +55,15 @@
               <n-button class="logoutBtn" @click="logout" color="#E8CDA2">登出</n-button>
             </a>
           </n-popover>
-          <n-popover trigger="click" v-if="isLogin" :show-arrow="false">
+          <n-popover trigger="hover" v-if="isLogin" :show-arrow="false">
             <template #trigger>
               <n-button class="burgarBtn" @mouseover="showMenu" color="#1F2E3C">
                 <font-awesome-icon icon="fa-solid fa-bars" />
               </n-button>
             </template>
+            <a href="#attractions">
+              景點
+            </a>
             <a href="#information">
               旅遊資訊
             </a>
@@ -89,7 +104,7 @@ import { useUserStore } from '@/stores/user.js'
 import { NButton } from 'naive-ui'
 const user = useUserStore()
 const { logout } = user
-const { isLogin, avatar } = storeToRefs(user)
+const { isLogin, isAdmin, avatar } = storeToRefs(user)
 
 const menuOptions = [
   {
@@ -111,14 +126,14 @@ const ItineraryOptions = [
     label: () => h('a', { href: '#plan' }, '規劃行程'), key: 'plan-itinerary'
   },
   {
-    label: () => h('a', { href: '#share' }, '分享行程'), key: 'share-itinerary'
+    label: () => h('a', { href: '#list' }, '分享行程'), key: 'list-itinerary'
   },
   {
-    label: () => h('a', { href: '#list' }, '歷史紀錄'), key: 'list-itinerary'
+    label: () => h('a', { href: '#share' }, '行程清單'), key: 'share-itinerary'
   }
 ]
-
 </script>
+
 <style lang="scss">
 #Admin {
 

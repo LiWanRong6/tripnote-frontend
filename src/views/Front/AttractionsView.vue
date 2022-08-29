@@ -2,8 +2,12 @@
   <div id="Attraction">
     <div class="container">
       <h1>景點</h1>
+      <n-input-group class="search">
+        <input type="search" v-model.lazy.trim="ItineraryItems.Keyword">
+        <button @keydown="SearchAttraction" @click="SearchAttraction">搜索</button>
+      </n-input-group>
       <div class="wrapper">
-        <n-card v-for="attraction in attractions" :key="attraction._id">
+        <n-card v-for="attraction in SearchAttraction" :key="attraction._id">
           <template #cover>
             <n-image :src="attraction.image"></n-image>
           </template>
@@ -16,7 +20,8 @@
             </div>
             <p class="description">{{ attraction.description }}</p>
           </div>
-          <template #footer v-if="token">
+
+          <template #footer v-if="isLogin">
             <div v-if="unpostTripnotes.length > 0" class="choose-itinerary">
               <h3>選擇行程</h3>
               <n-radio-group v-model:value="ItineraryItems._id">
@@ -38,13 +43,13 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import Swal from 'sweetalert2'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 const user = useUserStore()
-const { token } = storeToRefs(user)
+const { isLogin } = storeToRefs(user)
 
 const attractions = reactive([])
 const unpostTripnotes = reactive([])
@@ -54,7 +59,8 @@ const ItineraryItems = reactive({
   attraction: '',
   spend: 0,
   list: 0,
-  content: ''
+  content: '',
+  Keyword: ''
 })
 
 const addAttraction = async (AID) => {
@@ -98,24 +104,26 @@ const getAttractions = async () => {
   }
 }
 getAttractions()
-console.log()
-if (token) {
-  // 取的為分享的行程( ?+時間)
-  const getUnPostTripnotes = async () => {
-    try {
-      const { data } = await apiAuth.get('/tripnotes/unpost')
-      unpostTripnotes.push(...data.result)
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: '失敗',
-        text: '伺服器錯誤'
-      })
-    }
-  }
 
-  getUnPostTripnotes()
+const SearchAttraction = computed(() => {
+  return attractions.filter(item => item.name.match(ItineraryItems.Keyword))
+})
+console.log(SearchAttraction)
+
+// 取的為分享的行程( ?+時間)
+const getUnPostTripnotes = async () => {
+  try {
+    const { data } = await apiAuth.get('/tripnotes/unpost')
+    unpostTripnotes.push(...data.result)
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: '伺服器錯誤'
+    })
+  }
 }
+getUnPostTripnotes()
 
 </script>
 <style lang="scss" src="../../style/Attraction.scss">

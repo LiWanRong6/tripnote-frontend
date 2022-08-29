@@ -1,0 +1,39 @@
+// 變數
+@import './variables';
+
+// RWD
+@import './mixins/rwd';
+
+#AdminHome {
+  width: 100% !important;
+
+  .container {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .management-item {
+    text-decoration: none;
+    width: 40%;
+    height: 300px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $lightblue;
+    font-size: 32px;
+    color: white;
+
+    &:hover {
+      background-color: rgb(40, 118, 166);
+    }
+  }
+
+}

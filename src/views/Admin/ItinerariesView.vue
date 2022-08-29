@@ -30,7 +30,7 @@ const itinerariesList = reactive([
     title: '標題',
     key: 'title',
     render(row) {
-      return h('a', { href: '#' }, { default: () => row.title });
+      return h('a', { href: "#" }, { default: () => row.title });
     }
   }
   , {

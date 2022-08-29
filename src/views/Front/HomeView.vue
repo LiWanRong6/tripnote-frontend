@@ -87,7 +87,6 @@ const getTripNotes = async () => {
   try {
     const { data } = await api.get('/tripnotes/userall')
     NewTripNotes.push(...data.result.slice(-9))
-    console.log(NewTripNotes)
   } catch (error) {
     Swal.fire({
       icon: 'error',
