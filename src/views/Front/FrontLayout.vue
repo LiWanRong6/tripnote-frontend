@@ -10,6 +10,9 @@
       </div>
       <ul class="menu-items">
         <li class="menu-item">
+          <a href="#admin" v-if="isLogin && isAdmin">
+            <n-button color="#1F2E3C">管理</n-button>
+          </a>
           <a href="#attractions">
             <n-button color="#1F2E3C">景點</n-button>
           </a>
@@ -22,9 +25,7 @@
           <n-dropdown trigger="hover" :options="ItineraryOptions" v-if="isLogin">
             <n-button color="#1F2E3C">我的行程</n-button>
           </n-dropdown>
-          <a href="#admin" v-if="isLogin && isAdmin">
-            <n-button color="#1F2E3C">管理</n-button>
-          </a>
+
         </li>
         <!-- <li class="menu-item">
           <div class="search">
