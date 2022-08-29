@@ -52,7 +52,6 @@ import { useUserStore } from '@/stores/user'
 const user = useUserStore()
 const formRef = ref(false)
 
-const showModal = ref(false)
 const form = reactive({
   account: '',
   password: '',

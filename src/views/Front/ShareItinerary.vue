@@ -94,3 +94,22 @@ const init = async () => {
 }
 init()
 </script>
+
+<style lang="scss">
+#ShareItinerary {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+</style>
