@@ -34,7 +34,7 @@
             <n-checkbox v-model:checked="form.ispost"></n-checkbox>
           </n-form-item>
           <n-form-item label="敘述">
-            <n-input type="textarea" v-model:value='form.description' maxlength="200" show-count />
+            <n-input type="textarea" v-model:value='form.description' maxlength="200" show-count style="height:150px" />
           </n-form-item>
           <n-form-item label="內容">
             <div class="editor">
@@ -43,8 +43,9 @@
             </div>
           </n-form-item>
           <n-form-item>
-            <n-spin :show="form.submitting">
-              <input type="submit" value="確認">
+            <n-spin :show="form.submitting" style="display:flex;">
+              <input type="submit" class="submitBtn" value="確認"
+                style="background-color:#E8CDA2;border: 1px solid #1F2E3C;padding: 10px 50px;border-radius: 30px;">
             </n-spin>
           </n-form-item>
         </n-form>

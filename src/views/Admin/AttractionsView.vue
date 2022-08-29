@@ -7,7 +7,7 @@
       </div>
       <!-- 新增景點的表單 -->
       <n-modal v-model:show="form.showModal" :mask-closable="false" preset="card"
-        :title="form._id.length > 0 ? '編輯景點資訊' : '新增景點資訊'" style="width:500px">
+        :title="form._id.length > 0 ? '編輯景點資訊' : '新增景點資訊'" style="width:800px">
         <n-form ref="formValid" label-placement="left" :model="form" :rules="rules" @submit.prevent="submitAttraction">
           <n-form-item label="名稱" path="name">
             <n-input v-model:value='form.name' />
@@ -35,7 +35,7 @@
             </n-upload>
           </n-form-item>
           <n-form-item label="敘述">
-            <n-input type="textarea" v-model:value='form.description' maxlength="200" show-count />
+            <n-input type="textarea" v-model:value='form.description' maxlength="200" show-count style="height:200px" />
           </n-form-item>
           <n-form-item label="官網">
             <n-input v-model:value='form.official' />
@@ -51,7 +51,6 @@
           </n-form-item>
         </n-form>
       </n-modal>
-
       <n-data-table :columns="attractionlist" :data="attractions" :bordered="false" v-model:pagination="pagination" />
     </div>
   </div>
@@ -276,6 +275,7 @@ init()
       color: white;
       background-color: rgb(212, 28, 28);
     }
+
   }
 }
 </style>
